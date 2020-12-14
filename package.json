@@ -18,11 +18,11 @@
   },
   "homepage": "https://github.com/lirenyeo/react-group-chat-socket-io-server#readme",
   "dependencies": {
-    "chance": "^1.0.18",
+    "chance": "^1.1.7",
     "cors": "^2.8.5",
-    "express": "^4.16.4",
+    "express": "^4.17.1",
     "sentencer": "^0.1.5",
-    "socket.io": "^2.2.0"
+    "socket.io": "^3"
   },
   "engines": {
     "node": "10.9.0"

@@ -8,10 +8,14 @@ const port = process.env.PORT || 80
 const app = express()
 app.use(cors())
 
-const server = require('http').createServer(app).listen(port)
-const io = socketIO.listen(server)
-io.set('origins', '*:*')
-
+const server = require('http').createServer(app)
+const io = socketIO(server, {
+  cors: {
+    origins: ['*:*'],
+    methods: ["GET", "POST"]
+  }
+})
+server.listen(port)
 console.log('Server has started...')
 
 app.get('/', function (req, res) {
@@ -23,7 +27,6 @@ let users = []
 
 // Whenever a socket/user joins the server (io),
 io.on('connection', (socket) => {
-
   // we assign the user ID and random username and pass it to current user
   socket.on('NEW_USER', () => {
     const randomName = Sentencer.make("{{ adjective }} {{ noun }}")
